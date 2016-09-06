@@ -14,6 +14,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'mattn/emmet-vim'
+Plugin 'Raimondi/delimitMate'
 
 call vundle#end()
 
@@ -174,3 +176,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 nnoremap ; :
+
+" Emmet config
+" Rebind leader to C-z
+let g:user_emmet_leader_key='<C-Z>'
+
+" Auto indents and completes {} pair
+inoremap {<CR> {<CR>}<c-o>O<tab>
