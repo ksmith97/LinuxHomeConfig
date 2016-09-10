@@ -77,9 +77,11 @@ set nrformats-=octal
 set ttimeout
 set ttimeoutlen=100
 
-"Sets the default theme to solarize
-set background=dark
-colorscheme solarized
+"Sets the default theme to solarize. This doesnt work everywhere
+"set background=dark
+"colorscheme solarized
+
+colorscheme jellybeans
 
 "This makes vim use the system clipboard for yank and paste.
 set clipboard=unnamed
