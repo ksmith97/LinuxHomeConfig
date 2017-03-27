@@ -64,8 +64,8 @@ set t_vb=
 set cmdheight=2
 
 "Tabs should expand to four spaces.
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 set smarttab
 
@@ -185,3 +185,5 @@ let g:user_emmet_leader_key='<C-Z>'
 
 " Auto indents and completes {} pair
 inoremap {<CR> {<CR>}<c-o>O<tab>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>wq :wq<CR>
