@@ -50,7 +50,7 @@ set ruler
 set laststatus=2
 
 "Used to enable paste mode which prevents vim from messing with pasted text.
-set pastetoggle=<F2>
+set pastetoggle=<C-w>
 
 "This makes vim prompt on exit instead of auto fail
 set confirm
@@ -64,8 +64,8 @@ set t_vb=
 set cmdheight=2
 
 "Tabs should expand to four spaces.
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set smarttab
 
@@ -164,7 +164,7 @@ nnoremap <leader>tn  :tabnew<CR>
 nnoremap <leader>tc  :tabclose<CR>
 
 " Easy search and replace shortcuts
-nnoremap // yiw/<c-r>"<cr>
+nnoremap // *
 nnoremap /? yiw:%s/<c-r>"/
 
 " Syntastic config
@@ -185,5 +185,22 @@ let g:user_emmet_leader_key='<C-Z>'
 
 " Auto indents and completes {} pair
 inoremap {<CR> {<CR>}<c-o>O<tab>
+
+" exit with leader.
 nnoremap <leader>q :q<CR>
 nnoremap <leader>wq :wq<CR>
+nnoremap <leader>w :w<CR>
+
+autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md,*.rb :call <SID>StripTrailingWhitespaces()
+
+" strips trailing whitespace at the end of files. this
+" is called on buffer write in the autogroup above.
+function! <SID>StripTrailingWhitespaces()
+    " save last search & cursor position
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
